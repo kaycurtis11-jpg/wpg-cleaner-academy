@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const { moduleSlug, lessonSlug, quizScore, passed } = await request.json()
 
   // Upsert lesson progress
-  await supabase.from('academy_progress').upsert({
+  const { error: progressError } = await supabase.from('academy_progress').upsert({
     user_id: user.id,
     module_slug: moduleSlug,
     lesson_slug: lessonSlug,
@@ -17,6 +17,11 @@ export async function POST(request: Request) {
     quiz_score: quizScore ?? null,
     completed_at: new Date().toISOString(),
   }, { onConflict: 'user_id,module_slug,lesson_slug' })
+
+  if (progressError) {
+    console.error('Progress upsert error:', progressError)
+    return NextResponse.json({ error: progressError.message }, { status: 500 })
+  }
 
   // Record quiz attempt if score provided
   if (quizScore !== undefined) {
