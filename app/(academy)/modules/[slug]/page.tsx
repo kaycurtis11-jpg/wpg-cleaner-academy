@@ -19,9 +19,7 @@ const COLOR_MAP: Record<string, string> = {
   gold: 'bg-amber-100 text-amber-700 border-amber-200',
 }
 
-export async function generateStaticParams() {
-  return MODULES.map(m => ({ slug: m.slug }))
-}
+export const dynamic = 'force-dynamic'
 
 export default async function ModulePage({ params }: { params: { slug: string } }) {
   const mod = getModule(params.slug)
