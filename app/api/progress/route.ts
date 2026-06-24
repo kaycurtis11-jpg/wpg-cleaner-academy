@@ -1,5 +1,13 @@
 import { createClient } from '@/lib/supabase/server'
+import { createClient as createServiceClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
+
+function getServiceClient() {
+  return createServiceClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
+}
 
 export async function POST(request: Request) {
   const supabase = await createClient()
@@ -7,9 +15,9 @@ export async function POST(request: Request) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const { moduleSlug, lessonSlug, quizScore, passed } = await request.json()
+  const admin = getServiceClient()
 
-  // Upsert lesson progress
-  const { error: progressError } = await supabase.from('academy_progress').upsert({
+  const { error: progressError } = await admin.from('academy_progress').upsert({
     user_id: user.id,
     module_slug: moduleSlug,
     lesson_slug: lessonSlug,
@@ -23,9 +31,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: progressError.message }, { status: 500 })
   }
 
-  // Record quiz attempt if score provided
   if (quizScore !== undefined) {
-    await supabase.from('academy_quiz_attempts').insert({
+    await admin.from('academy_quiz_attempts').insert({
       user_id: user.id,
       module_slug: moduleSlug,
       score: quizScore,
@@ -34,9 +41,8 @@ export async function POST(request: Request) {
     })
   }
 
-  // Check if final certification
   if (moduleSlug === 'certification' && passed) {
-    await supabase.from('academy_certifications').upsert({
+    await admin.from('academy_certifications').upsert({
       user_id: user.id,
       certification_type: 'academy_completion',
       issued_at: new Date().toISOString(),
@@ -51,7 +57,8 @@ export async function GET() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { data } = await supabase
+  const admin = getServiceClient()
+  const { data } = await admin
     .from('academy_progress')
     .select('*')
     .eq('user_id', user.id)
