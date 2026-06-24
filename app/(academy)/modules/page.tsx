@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import { MODULES } from '@/lib/data/modules'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 const COLOR_MAP: Record<string, string> = {
   blue: 'bg-blue-100 text-blue-700',
   purple: 'bg-purple-100 text-purple-700',
