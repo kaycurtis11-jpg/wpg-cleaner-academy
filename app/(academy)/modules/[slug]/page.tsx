@@ -100,6 +100,18 @@ export default async function ModulePage({ params }: { params: { slug: string } 
                 {lesson.type === 'lesson' && (
                   <div className="space-y-4">
                     {lesson.content && <p className="text-gray-700 leading-relaxed">{lesson.content}</p>}
+                    {lesson.image && (
+                      <div className="rounded-xl overflow-hidden border border-gray-100">
+                        <img
+                          src={lesson.image.src}
+                          alt={lesson.image.alt}
+                          className="w-full object-contain bg-white"
+                        />
+                        {lesson.image.caption && (
+                          <p className="text-xs text-gray-500 text-center py-2 bg-gray-50 border-t border-gray-100">{lesson.image.caption}</p>
+                        )}
+                      </div>
+                    )}
                     {lesson.sections?.map((section, si) => (
                       <div key={si}>
                         <h3 className="font-semibold text-gray-900 mb-2">{section.heading}</h3>
@@ -191,7 +203,9 @@ export default async function ModulePage({ params }: { params: { slug: string } 
                           <p className="font-medium text-sm text-gray-800 mb-3">{video.title}</p>
                           <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden">
                             <iframe
-                              src={`https://www.youtube.com/embed/${video.embedId}`}
+                              src={video.source === 'drive'
+                                ? `https://drive.google.com/file/d/${video.embedId}/preview`
+                                : `https://www.youtube.com/embed/${video.embedId}`}
                               title={video.title}
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen

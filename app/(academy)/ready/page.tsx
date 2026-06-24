@@ -29,7 +29,7 @@ const CONTRACTOR_ITEMS = [
   { id: 'email', label: 'I know the general support email — support@wpglocalcleaners.ca' },
   { id: 'taxes', label: 'I understand I am responsible for remitting my own taxes to the CRA, including both portions of CPP' },
   { id: 'ei', label: 'I understand I am NOT eligible for Employment Insurance (EI) through WPG Local Cleaners' },
-  { id: 'insurance', label: 'I understand I am responsible for my own liability and accident insurance — WPG\'s insurance does not cover me' },
+  { id: 'insurance', label: 'I understand that Commercial General Liability (CGL) insurance is required before my first job and I must provide a Certificate of Insurance to management' },
   { id: 'attendance', label: 'I understand I am responsible for finding a substitute if I cannot make an accepted job' },
   { id: 'checklist', label: 'I will complete every task on the client checklist before leaving — no shortcuts' },
   { id: 'damage', label: 'I will report all damage, injuries, and incidents to management immediately — never hide them' },

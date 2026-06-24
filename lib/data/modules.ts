@@ -17,7 +17,8 @@ export interface LessonContent {
   tip?: string
   questions?: QuizQuestion[]
   items?: { label: string; note?: string }[]
-  videos?: { title: string; embedId: string }[]
+  videos?: { title: string; embedId: string; source?: 'youtube' | 'drive' }[]
+  image?: { src: string; alt: string; caption?: string }
 }
 
 export interface ModuleData {
@@ -27,7 +28,7 @@ export interface ModuleData {
   icon: string
   color: string
   estimatedMinutes: number
-  track: 'all' | 'employee' | 'contractor'
+  track: 'all' | 'residential' | 'commercial'
   lessons: LessonContent[]
 }
 
@@ -197,27 +198,46 @@ export const MODULES: ModuleData[] = [
           {
             heading: 'What It Means to Be an Independent Contractor',
             bullets: [
+              'You are paid a higher gross rate per job — this reflects the additional responsibilities you carry as a business owner',
               'You operate as your own business and set your own availability',
               'You are responsible for remitting your own taxes to the CRA',
               'You must pay both employee and employer portions of CPP contributions',
               'You are NOT eligible for EI unless you have purchased self-employed EI coverage',
-              'You are responsible for your own liability insurance (strongly recommended)',
+              'You are required to carry your own Commercial General Liability (CGL) insurance — proof required before first job',
               'You may use your own equipment or request company supplies depending on your contract',
+            ],
+          },
+          {
+            heading: 'A Key Advantage: Business Expense Deductions',
+            bullets: [
+              'As a contractor, you can deduct eligible business expenses from your income before tax — employees cannot do this',
+              'This means your effective tax rate on what you earn is often lower than an employee making the same gross amount',
+              'The more legitimate expenses you track and claim, the less taxable income you have',
+            ],
+          },
+          {
+            heading: 'Eligible Business Expenses to Track',
+            bullets: [
+              'Gas & mileage — every kilometer driven to and from a client location is deductible. Keep a log or use a mileage app',
+              'Gas explained: you can deduct the portion of your gas costs used for work travel — this adds up significantly over a year of cleaning',
+              'Cleaning supplies you purchase for work',
+              'Portion of your phone bill used for work communication',
+              'Insurance premiums — your CGL policy (~$50/month via Zensurance) is fully deductible',
+              'Professional development and training costs',
             ],
           },
           {
             heading: 'Financial Responsibilities',
             bullets: [
               'Track all business income — you will receive a T4A at year end',
-              'Track eligible business expenses (supplies, mileage, phone use)',
               'Set aside approximately 25–30% of income for taxes',
-              'Track mileage using an app like MileIQ, Everlance, or TripLog',
-              'Consider opening a separate business bank account',
+              'Track mileage from day one using an app like MileIQ, Everlance, or TripLog — they run in the background automatically',
+              'File as self-employed with the CRA each year',
             ],
           },
         ],
         warning: 'Consult a tax professional. Contractor tax obligations can be complex and penalties for non-compliance can be significant.',
-        tip: 'Recommended mileage tracking apps: MileIQ, Everlance, TripLog. These apps run in the background and auto-track your drives.',
+        tip: 'Mileage is one of the biggest deductions most cleaners overlook. If you drive 15,000 km for work in a year at the CRA rate of $0.72/km, that\'s $10,800 off your taxable income.',
       },
       {
         slug: 'path-comparison',
@@ -239,12 +259,14 @@ export const MODULES: ModuleData[] = [
           {
             heading: 'Independent Contractor',
             bullets: [
+              '✅ Higher gross pay per job — reflects the responsibilities you carry',
               '✅ Set your own availability',
               '✅ Choose which jobs to accept',
-              '✅ Deduct business expenses',
+              '✅ Deduct business expenses — gas, supplies, insurance, phone',
+              '✅ Lower effective tax rate through expense deductions',
               '✅ Work as your own boss',
-              '⚠️ Responsible for own taxes',
-              '⚠️ Must carry own insurance',
+              '⚠️ Responsible for own taxes and CPP (both portions)',
+              '⚠️ Must carry own CGL insurance (~$50/month via Zensurance)',
               '⚠️ No EI protection (unless self-purchased)',
             ],
           },
@@ -255,45 +277,45 @@ export const MODULES: ModuleData[] = [
         slug: 'contractor-insurance',
         title: 'Contractor Insurance Requirements',
         type: 'lesson',
-        content: 'If you are working as an independent contractor, you are responsible for carrying your own insurance. WPG Local Cleaners\' business insurance does not extend to independent contractors.',
+        content: 'As an independent contractor with WPG Local Cleaners, you are required to obtain your own Commercial General Liability (CGL) insurance before beginning work. This is a condition of working with us — not a suggestion.',
         sections: [
           {
-            heading: 'Why Insurance Matters',
+            heading: 'Required: Commercial General Liability (CGL) Insurance',
             bullets: [
-              'As a contractor, you are operating as your own business — the liability is yours',
-              'If you accidentally damage client property without insurance, you are personally liable for the cost',
-              'If you are injured on the job, you are not covered under WPG Local Cleaners\' workers\' compensation',
-              'Clients and management may request proof of insurance at any time',
+              'CGL insurance is mandatory for all independent contractors at WPG Local Cleaners',
+              'Minimum coverage: $2 million — this is the standard for independent service contractors in Manitoba',
+              'You must provide a Certificate of Insurance to management before your first job',
+              'CGL protects you if you accidentally damage a client\'s property — without it, you are personally liable',
             ],
           },
           {
-            heading: 'Recommended Coverage for Contractors',
+            heading: 'WCB Coverage',
             bullets: [
-              'Commercial General Liability (CGL) Insurance — minimum $2 million coverage is standard in Manitoba for independent service contractors',
-              'CGL protects you if you accidentally damage a client\'s property',
-              'Personal Accident Insurance — covers you if you are injured while working',
-              'Optional: Tools & Equipment coverage if you own and transport your own cleaning equipment',
+              'WPG pays into WCB for all employees and for contractors who do not carry their own WCB or personal accident coverage',
+              'If you are injured on the job and do not have your own WCB coverage, you are protected through WPG\'s WCB account',
+              'If you already carry your own WCB or personal accident insurance, inform management',
             ],
           },
           {
-            heading: 'How to Get Coverage',
+            heading: 'How to Get CGL Coverage',
             bullets: [
-              'Contact any Canadian insurance broker — many offer same-day certificates for contractors',
-              'Providers to ask about: Intact, Aviva, Economical, or any independent broker',
-              'Monthly premiums for basic $2M CGL coverage typically range from $30–$80/month for cleaning contractors',
-              'Ask for a Certificate of Insurance — this is the document management may request',
+              'WPG Local Cleaners recommends Zensurance — an online Canadian broker built for small businesses and independent contractors',
+              'Zensurance is fast, fully online, and typically costs approximately $50/month for cleaning contractors',
+              'Visit zensurance.com and select "Cleaning Services" — you can get a quote and certificate in minutes',
+              'Other options: Intact, Aviva, Economical, or any independent broker',
+              'Ask for a Certificate of Insurance — this is the document management requires before your first job',
             ],
           },
           {
             heading: 'Employees',
             bullets: [
-              'Employees are covered under WPG Local Cleaners\' commercial insurance and workers\' compensation',
-              'You do not need to carry your own liability insurance as an employee',
+              'Employees are covered under WPG Local Cleaners\' WCB account and commercial liability insurance',
+              'Employees do not need to carry their own insurance',
               'Any work-related injury must still be reported to management immediately',
             ],
           },
         ],
-        warning: 'Working without insurance as a contractor is a significant personal financial risk. A single incident of property damage can cost thousands of dollars. Insurance is strongly recommended before your first job.',
+        warning: 'You cannot begin working as an independent contractor until management has received your Certificate of Insurance. Get this sorted before your first job.',
         tip: 'This information is general guidance. Consult an insurance broker for advice specific to your situation.',
       },
       {
@@ -471,6 +493,11 @@ export const MODULES: ModuleData[] = [
         title: 'WHMIS Hazard Symbols',
         type: 'lesson',
         content: 'You must be able to recognize these 9 WHMIS hazard symbols. They appear on product labels and Safety Data Sheets.',
+        image: {
+          src: 'https://gtgehlzvrllvhmbwhpgw.supabase.co/storage/v1/object/public/sds-sheets/whmis-symbols.png',
+          alt: 'WHMIS GHS Hazard Symbols Chart',
+          caption: 'The 9 standardized WHMIS 2015 / GHS hazard symbols',
+        },
         sections: [
           {
             heading: 'The 9 Hazard Symbols',
@@ -763,7 +790,7 @@ export const MODULES: ModuleData[] = [
     icon: '🏡',
     color: 'teal',
     estimatedMinutes: 30,
-    track: 'all',
+    track: 'residential',
     lessons: [
       {
         slug: 'residential-intro',
@@ -924,17 +951,19 @@ export const MODULES: ModuleData[] = [
         title: 'Training Videos',
         type: 'video',
         videos: [
-          { title: 'How To Clean A Home Fast — Step-by-Step', embedId: 'dQw4w9WgXcQ' },
-          { title: 'How To Perform A Residential Deep Clean', embedId: 'dQw4w9WgXcQ' },
-          { title: 'Move In/Move Out Cleaning Tips', embedId: 'dQw4w9WgXcQ' },
-          { title: 'Bathroom Cleaning 101', embedId: 'dQw4w9WgXcQ' },
-          { title: 'How To Clean Glass Shower Doors Like A Pro', embedId: 'dQw4w9WgXcQ' },
-          { title: 'Kitchen Cleaning Tips', embedId: 'dQw4w9WgXcQ' },
-          { title: 'How To Clean Your Refrigerator', embedId: 'dQw4w9WgXcQ' },
-          { title: 'How To Clean Your Oven Like A Pro', embedId: 'dQw4w9WgXcQ' },
-          { title: 'Cleaning Glass Cooktops Like A Pro', embedId: 'dQw4w9WgXcQ' },
-          { title: 'Easy Floor Cleaning Tips', embedId: 'dQw4w9WgXcQ' },
-          { title: 'How To Clean Interior Windows Without Streaks', embedId: 'dQw4w9WgXcQ' },
+          { title: 'Cleaning 101', embedId: '0rNMpFcebcc' },
+          { title: 'How to Deep Clean a Home', embedId: 'JflYB9gHCek' },
+          { title: 'Move In / Move Out Clean', embedId: 'XJSeBnIf_pk' },
+          { title: 'Bathroom Cleaning', embedId: 'GVeHi7TSEgI' },
+          { title: 'How To Clean Glass Shower Doors', embedId: 'VTOs3exVxHc' },
+          { title: 'How To Clean Tubs & Showers', embedId: 'ExEDcKK8u4E' },
+          { title: 'Kitchen Cleaning', embedId: '3Vryfeo7rrE' },
+          { title: 'How To Clean Your Refrigerator', embedId: 'Yj3VZVCrFkU' },
+          { title: 'How To Clean Your Oven', embedId: 'kEwvNgWIZAU' },
+          { title: 'How To Clean a Glass Stove', embedId: 'aV3_Cmf6kMk' },
+          { title: 'How To Clean a Gas Stove', embedId: 'U5GdB42-rdM' },
+          { title: 'Floor Cleaning', embedId: 'did-T8pkKK4' },
+          { title: 'How To Clean Windows Without Streaks', embedId: 'ZyRnWSx1VTg' },
         ],
       },
       {
@@ -990,7 +1019,7 @@ export const MODULES: ModuleData[] = [
     icon: '🏢',
     color: 'indigo',
     estimatedMinutes: 20,
-    track: 'all',
+    track: 'commercial',
     lessons: [
       {
         slug: 'commercial-intro',
@@ -1064,6 +1093,18 @@ export const MODULES: ModuleData[] = [
           'Interior of oven',
         ],
         warning: 'Never perform add-on services unless they are confirmed as part of your contract. If a client requests extra services on the spot, contact management before proceeding.',
+      },
+      {
+        slug: 'commercial-videos',
+        title: 'Training Videos',
+        type: 'video',
+        videos: [
+          { title: 'How To Clean an Office', embedId: '4t2U-TKDmUg' },
+          { title: 'How To Clean a Commercial Washroom', embedId: 's03XgZi3VBo' },
+          { title: 'Mopping Techniques', embedId: 'TXt-XwHywOY' },
+          { title: 'How To Vacuum Properly', embedId: 'vk4SlLFuRwM' },
+          { title: 'How To Clean Windows Without Streaks', embedId: 'ZyRnWSx1VTg' },
+        ],
       },
       {
         slug: 'commercial-quiz',
@@ -1219,6 +1260,14 @@ export const MODULES: ModuleData[] = [
         ],
         warning: 'If you notice something in the notes that conflicts with what you see on-site (e.g., the entry code doesn\'t work, a room that was supposed to be accessible is locked), contact management before making any judgment calls.',
         tip: 'Build a habit: open Jobber the night before each job. Read the notes, check the entry method, confirm the address. You will never be caught off guard.',
+      },
+      {
+        slug: 'jobber-video',
+        title: 'How to Use Jobber',
+        type: 'video',
+        videos: [
+          { title: 'How to Use Jobber — WPG Local Cleaners Walkthrough', embedId: '1J9hx5VBOKMDldVHp1PKk_PWJaeJqaCKC', source: 'drive' },
+        ],
       },
     ],
   },
@@ -1483,31 +1532,40 @@ export const MODULES: ModuleData[] = [
               'Per-job rate as agreed in your contractor agreement',
               'Payments are made according to your payment schedule',
               'A T4A is issued at year end for tax reporting',
-              'No deductions are made — you receive full gross payment',
+              'No deductions are made — you receive your full gross payment every time',
             ],
           },
           {
-            heading: 'Your Tax Responsibilities',
+            heading: 'The Tax Advantage of Contracting',
             bullets: [
-              'Set aside 25–30% of all income for taxes',
-              'You pay both employee AND employer portions of CPP',
-              'File as self-employed with the CRA each year',
-              'Track all eligible business expenses for deductions',
+              'Contractors can deduct eligible business expenses before calculating taxes — employees cannot',
+              'This means your effective tax rate on what you earn can be lower than an employee making the same gross amount',
+              'The more legitimate expenses you track, the less taxable income you have — this is completely legal and encouraged by the CRA',
+              'Set aside approximately 25–30% of income for taxes, less your deductible expenses',
             ],
           },
           {
-            heading: 'Trackable Business Expenses',
+            heading: 'Eligible Business Expenses',
             bullets: [
-              'Mileage to and from client locations (keep a log!)',
-              'Cleaning supplies you purchase yourself',
-              'Portion of phone bill used for work',
-              'Professional development and training',
-              'Insurance premiums',
+              'Gas & mileage — every km driven to/from client locations is deductible. Track from day one.',
+              'Gas explained: you deduct the work-related portion of your fuel costs. If you drive to 4 clients a day, 5 days a week, this adds up to thousands of dollars off your taxable income each year.',
+              'Cleaning supplies you purchase for work',
+              'Portion of your phone bill used for work',
+              'CGL insurance premiums (~$50/month via Zensurance — fully deductible)',
+              'Professional development and training costs',
+            ],
+          },
+          {
+            heading: 'What You Are Responsible For',
+            bullets: [
+              'Remitting your own taxes to the CRA — nothing is deducted for you',
+              'Both employee AND employer portions of CPP contributions',
+              'Filing as self-employed with the CRA each year',
             ],
           },
         ],
         warning: 'This is general information only. Consult a qualified tax professional or accountant for advice specific to your situation.',
-        tip: 'Recommended mileage tracking apps: MileIQ, Everlance, or TripLog. They run in the background and auto-track your drives.',
+        tip: 'Mileage is one of the biggest deductions most cleaners overlook. At the 2024 CRA rate of $0.72/km for the first 5,000 km, driving just 30 km/day 5 days a week adds up to over $5,600 in deductions in a year.',
       },
     ],
   },

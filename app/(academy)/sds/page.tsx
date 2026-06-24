@@ -180,11 +180,11 @@ export default function SDSPage() {
         <div className="grid sm:grid-cols-2 gap-3">
           <div className="bg-green-50 border border-green-200 rounded-xl p-4">
             <p className="font-semibold text-green-800 text-sm mb-1">✅ Employees</p>
-            <p className="text-green-700 text-sm">Covered under WPG Local Cleaners&apos; WCB/Workers&apos; Compensation for work-related injuries. Report any injury to management immediately.</p>
+            <p className="text-green-700 text-sm">Covered under WPG Local Cleaners&apos; WCB (Workers&apos; Compensation Board) for work-related injuries. Report any injury to management immediately.</p>
           </div>
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-            <p className="font-semibold text-amber-800 text-sm mb-1">⚠️ Independent Contractors</p>
-            <p className="text-amber-700 text-sm">You are responsible for your own injury coverage. You are strongly encouraged to carry personal liability and accident insurance. WCB coverage is not provided by WPG.</p>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <p className="font-semibold text-blue-800 text-sm mb-1">🔀 Independent Contractors</p>
+            <p className="text-blue-700 text-sm">You are required to carry Commercial General Liability (CGL) insurance — proof must be provided to management before your first job. WPG covers WCB on your behalf if you do not carry your own; inform management if you do.</p>
           </div>
         </div>
         <p className="text-xs text-gray-500">Regardless of your status — all chemical exposures, injuries, and near-misses must be reported to management immediately.</p>

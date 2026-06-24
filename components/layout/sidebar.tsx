@@ -9,13 +9,21 @@ import { useRouter } from 'next/navigation'
 const NAV = [
   { href: '/dashboard', label: 'Dashboard', icon: '📊' },
   { href: '/modules', label: 'All Modules', icon: '📚' },
+  { href: '/checklists', label: 'Checklists', icon: '☑️' },
   { href: '/sds', label: 'Safety Data Sheets', icon: '⚠️' },
   { href: '/ready', label: 'Pre-Work Sign-Off', icon: '✅' },
   { href: '/faq', label: 'FAQ', icon: '❓' },
   { href: '/profile', label: 'My Profile', icon: '👤' },
 ]
 
-export function Sidebar({ completedSlugs }: { completedSlugs: string[] }) {
+type CleaningTrack = 'both' | 'residential' | 'commercial'
+
+function isOptional(modTrack: string, userTrack: CleaningTrack) {
+  if (modTrack === 'all' || userTrack === 'both') return false
+  return modTrack !== userTrack
+}
+
+export function Sidebar({ completedSlugs, cleaningTrack = 'both' }: { completedSlugs: string[]; cleaningTrack?: CleaningTrack }) {
   const pathname = usePathname()
   const router = useRouter()
   const supabase = createClient()
@@ -66,6 +74,7 @@ export function Sidebar({ completedSlugs }: { completedSlugs: string[] }) {
           {MODULES.map(mod => {
             const done = completedSlugs.includes(mod.slug)
             const active = pathname.includes(`/modules/${mod.slug}`)
+            const optional = isOptional(mod.track, cleaningTrack)
             return (
               <Link
                 key={mod.slug}
@@ -74,8 +83,11 @@ export function Sidebar({ completedSlugs }: { completedSlugs: string[] }) {
                   active ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50'
                 }`}
               >
-                <span className="text-base leading-none">{done ? '✅' : mod.icon}</span>
-                <span className="truncate">{mod.title}</span>
+                <span className="text-base leading-none flex-shrink-0">{done ? '✅' : optional ? '⏭️' : mod.icon}</span>
+                <span className="truncate flex-1">{mod.title}</span>
+                {optional && !done && (
+                  <span className="text-gray-400 text-xs flex-shrink-0">opt</span>
+                )}
               </Link>
             )
           })}

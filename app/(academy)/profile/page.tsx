@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { MODULES } from '@/lib/data/modules'
 import Link from 'next/link'
+import { TrackSelector } from '@/components/academy/track-selector'
 
 export default async function ProfilePage() {
   const supabase = await createClient()
@@ -27,6 +28,13 @@ export default async function ProfilePage() {
     .order('attempted_at', { ascending: false })
     .limit(10)
 
+  const { data: profileData } = await supabase
+    .from('academy_profiles')
+    .select('cleaning_track')
+    .eq('user_id', user.id)
+    .maybeSingle()
+
+  const cleaningTrack = (profileData?.cleaning_track ?? 'both') as 'both' | 'residential' | 'commercial'
   const name = user.user_metadata?.full_name ?? 'Cleaner'
   const completedModuleSlugs = new Set((progress ?? []).map((p: { module_slug: string }) => p.module_slug))
   const completedCount = completedModuleSlugs.size
@@ -88,6 +96,13 @@ export default async function ProfilePage() {
           )}
         </div>
       )}
+
+      {/* Cleaning track */}
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <h3 className="font-semibold text-gray-900 mb-1">Cleaning Track</h3>
+        <p className="text-sm text-gray-500 mb-4">Set your track so optional modules are clearly marked in your module list.</p>
+        <TrackSelector current={cleaningTrack} />
+      </div>
 
       {/* Module progress */}
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">

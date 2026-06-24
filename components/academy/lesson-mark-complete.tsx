@@ -11,6 +11,7 @@ interface Props {
 
 export function LessonMarkComplete({ moduleSlug, lessonSlug, label = 'Mark as Complete' }: Props) {
   const [loading, setLoading] = useState(false)
+  const [done, setDone] = useState(false)
   const router = useRouter()
 
   async function mark() {
@@ -21,7 +22,16 @@ export function LessonMarkComplete({ moduleSlug, lessonSlug, label = 'Mark as Co
       body: JSON.stringify({ moduleSlug, lessonSlug, passed: true }),
     })
     setLoading(false)
+    setDone(true)
     router.refresh()
+  }
+
+  if (done) {
+    return (
+      <div className="w-full bg-green-500 text-white font-semibold py-3 rounded-xl mt-2 flex items-center justify-center gap-2">
+        <span>✓</span> Completed
+      </div>
+    )
   }
 
   return (

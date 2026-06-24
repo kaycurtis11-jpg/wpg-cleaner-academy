@@ -7,7 +7,18 @@ import { MODULES } from '@/lib/data/modules'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 
-export function MobileNav({ completedSlugs, userName }: { completedSlugs: string[]; userName: string }) {
+type CleaningTrack = 'both' | 'residential' | 'commercial'
+
+function isOptional(modTrack: string, userTrack: CleaningTrack) {
+  if (modTrack === 'all' || userTrack === 'both') return false
+  return modTrack !== userTrack
+}
+
+export function MobileNav({ completedSlugs, userName, cleaningTrack = 'both' }: {
+  completedSlugs: string[]
+  userName: string
+  cleaningTrack?: CleaningTrack
+}) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
@@ -56,6 +67,7 @@ export function MobileNav({ completedSlugs, userName }: { completedSlugs: string
               {[
                 { href: '/dashboard', label: 'Dashboard', icon: '📊' },
                 { href: '/modules', label: 'All Modules', icon: '📚' },
+                { href: '/checklists', label: 'Checklists', icon: '☑️' },
                 { href: '/sds', label: 'Safety Data Sheets', icon: '⚠️' },
                 { href: '/ready', label: 'Pre-Work Sign-Off', icon: '✅' },
                 { href: '/faq', label: 'FAQ', icon: '❓' },
@@ -77,17 +89,22 @@ export function MobileNav({ completedSlugs, userName }: { completedSlugs: string
             <div className="px-4 border-t pt-4">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Modules</p>
               <div className="space-y-1 max-h-72 overflow-y-auto">
-                {MODULES.map(mod => (
-                  <Link
-                    key={mod.slug}
-                    href={`/modules/${mod.slug}`}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-600 hover:bg-gray-50"
-                  >
-                    <span>{completedSlugs.includes(mod.slug) ? '✅' : mod.icon}</span>
-                    <span className="truncate">{mod.title}</span>
-                  </Link>
-                ))}
+                {MODULES.map(mod => {
+                  const done = completedSlugs.includes(mod.slug)
+                  const optional = isOptional(mod.track, cleaningTrack)
+                  return (
+                    <Link
+                      key={mod.slug}
+                      href={`/modules/${mod.slug}`}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-600 hover:bg-gray-50"
+                    >
+                      <span className="flex-shrink-0">{done ? '✅' : optional ? '⏭️' : mod.icon}</span>
+                      <span className="truncate flex-1">{mod.title}</span>
+                      {optional && !done && <span className="text-gray-400 flex-shrink-0">opt</span>}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
 
