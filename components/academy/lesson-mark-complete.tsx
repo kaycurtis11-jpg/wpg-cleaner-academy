@@ -12,12 +12,12 @@ interface Props {
 export function LessonMarkComplete({ moduleSlug, lessonSlug, label = 'Mark as Complete' }: Props) {
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
   async function mark() {
     setLoading(true)
-    setError(false)
+    setError(null)
     try {
       const res = await fetch('/api/progress', {
         method: 'POST',
@@ -28,10 +28,11 @@ export function LessonMarkComplete({ moduleSlug, lessonSlug, label = 'Mark as Co
         setDone(true)
         router.refresh()
       } else {
-        setError(true)
+        const data = await res.json().catch(() => ({}))
+        setError(data.error ?? `Error ${res.status}`)
       }
-    } catch {
-      setError(true)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Network error')
     }
     setLoading(false)
   }
@@ -54,7 +55,7 @@ export function LessonMarkComplete({ moduleSlug, lessonSlug, label = 'Mark as Co
         {loading ? 'Saving…' : `✓ ${label}`}
       </button>
       {error && (
-        <p className="text-xs text-red-500 text-center">Failed to save — check your connection and try again.</p>
+        <p className="text-xs text-red-500 text-center">Failed to save: {error}</p>
       )}
     </div>
   )
