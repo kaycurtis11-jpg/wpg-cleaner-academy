@@ -38,13 +38,27 @@ export default async function DashboardPage() {
     .select('certification_type, issued_at')
     .eq('user_id', user.id)
 
+  const { data: profileData } = await supabase
+    .from('academy_profiles')
+    .select('cleaning_track')
+    .eq('user_id', user.id)
+    .maybeSingle()
+
+  const cleaningTrack = (profileData?.cleaning_track ?? 'both') as 'both' | 'residential' | 'commercial'
+
+  function isRequired(modTrack: string) {
+    if (modTrack === 'all' || cleaningTrack === 'both') return true
+    return modTrack === cleaningTrack
+  }
+
   const name = user.user_metadata?.full_name?.split(' ')[0] ?? 'Cleaner'
-  const totalModules = MODULES.length
-  const completedCount = completedModules.size
+  const requiredModules = MODULES.filter(m => isRequired(m.track))
+  const totalModules = requiredModules.length
+  const completedCount = requiredModules.filter(m => completedModules.has(m.slug)).length
   const progressPct = Math.round((completedCount / totalModules) * 100)
   const isCertified = (certifications ?? []).some((c: { certification_type: string }) => c.certification_type === 'academy_completion')
 
-  const nextModule = MODULES.find(m => !completedModules.has(m.slug))
+  const nextModule = requiredModules.find(m => !completedModules.has(m.slug))
 
   return (
     <div className="space-y-8">
