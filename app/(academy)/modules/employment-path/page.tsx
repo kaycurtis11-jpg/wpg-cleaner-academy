@@ -202,6 +202,9 @@ export default function EmploymentPathPage() {
           </InfoCard>
 
           <InfoCard icon={TrendingUp} color="purple" title="Deductible Expenses">
+            <p className="text-xs text-gray-500 mb-2.5">
+              A <strong>deduction</strong> is a business expense you subtract from your income before tax is calculated — meaning you only pay tax on what&apos;s left. The more legitimate expenses you track, the lower your taxable income.
+            </p>
             <ul className="space-y-1.5 text-sm text-gray-600">
               <li>• <strong>Vehicle:</strong> business-use mileage or actual expenses</li>
               <li>• <strong>Cleaning supplies &amp; equipment</strong> you purchase</li>
@@ -209,6 +212,14 @@ export default function EmploymentPathPage() {
               <li>• <strong>Liability insurance</strong> premiums (~$50/month via Zensurance)</li>
               <li>• Professional development &amp; certifications</li>
             </ul>
+            <div className="mt-3 bg-purple-50 rounded-lg px-3 py-2.5 text-xs text-purple-800 space-y-1">
+              <p className="font-semibold">Example — what this could look like in a year:</p>
+              <p>• Vehicle (10,000 km × $0.72) = <strong>$7,200</strong></p>
+              <p>• Insurance premiums = <strong>$600</strong></p>
+              <p>• Phone (50% of $60/mo) = <strong>$360</strong></p>
+              <p>• Supplies &amp; equipment = <strong>$500</strong></p>
+              <p className="pt-1 border-t border-purple-200 font-semibold">Total deducted: ~$8,660 — at a 25% tax rate, that&apos;s ~$2,165 back in your pocket.</p>
+            </div>
           </InfoCard>
 
           <InfoCard icon={Package} color="purple" title="Supplies & Equipment">
