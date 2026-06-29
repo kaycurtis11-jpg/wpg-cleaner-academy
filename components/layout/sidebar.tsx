@@ -7,13 +7,12 @@ import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 
 const NAV = [
-  { href: '/dashboard', label: 'Dashboard', icon: '📊' },
+  { href: '/dashboard', label: 'My Dashboard', icon: '📊' },
   { href: '/modules', label: 'All Modules', icon: '📚' },
   { href: '/checklists', label: 'Checklists', icon: '☑️' },
   { href: '/sds', label: 'Safety Data Sheets', icon: '⚠️' },
   { href: '/ready', label: 'Pre-Work Sign-Off', icon: '✅' },
   { href: '/faq', label: 'FAQ', icon: '❓' },
-  { href: '/profile', label: 'My Profile', icon: '👤' },
 ]
 
 type CleaningTrack = 'both' | 'residential' | 'commercial'
