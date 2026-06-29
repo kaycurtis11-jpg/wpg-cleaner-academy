@@ -1502,18 +1502,18 @@ export const MODULES: ModuleData[] = [
         slug: 'employee-earnings',
         title: 'Employee Compensation',
         type: 'lesson',
-        content: 'As an employee, you start at $19/hour and are paid biweekly. Vacation pay (4%) is included in every paycheque. Taxes, CPP, and EI are all deducted automatically — you receive a T4 at year-end and file a standard tax return.',
+        content: 'As an employee, you are paid biweekly at an hourly rate set by management. Vacation pay (4%) is included in every paycheque. Taxes, CPP, and EI are all deducted automatically — you receive a T4 at year-end and file a standard tax return.',
         sections: [
           {
             heading: 'What\'s Included',
             bullets: [
-              '$19/hour starting rate',
+              'Competitive hourly rate (set by management)',
               'Biweekly pay',
               '4% vacation pay, paid out each pay period',
               'CPP and EI deducted and matched/remitted by the company',
               'WCB coverage provided',
               'T4 slip at year-end',
-              'Tips: any tips left by clients are yours and paid out on your regular pay schedule',
+              'Tips: you keep 100% of any tip left by the client, paid out on your regular pay schedule',
             ],
           },
         ],
@@ -1523,18 +1523,18 @@ export const MODULES: ModuleData[] = [
         slug: 'contractor-earnings',
         title: 'Contractor Compensation',
         type: 'lesson',
-        content: 'As a contractor, you start at $23/hour with more frequent payouts. You receive your full amount with no deductions — but you are responsible for setting aside taxes and filing as self-employed. The upside: you can deduct business expenses like mileage, supplies, and insurance.',
+        content: 'As a contractor, you typically earn higher rates than employees — reflecting the additional responsibilities you carry as a self-employed individual. You receive your full amount with no deductions, but you are responsible for setting aside taxes and filing as self-employed. The upside: you can deduct business expenses like mileage, supplies, and insurance.',
         sections: [
           {
             heading: 'What\'s Included',
             bullets: [
-              '$23/hour starting rate',
+              'Higher gross rate than employees — reflects your responsibilities as a business owner',
               'More frequent payouts',
               'Submit invoices or log jobs in the company system',
               'No deductions — full gross paid every time',
               'WCB covered by WPG if you don\'t carry your own',
               'T4A slip at year-end',
-              'Tips: any tips left by clients are yours and paid out according to your pay schedule',
+              'Tips: you keep 100% of any tip left by the client, paid out according to your pay schedule',
             ],
           },
           {
