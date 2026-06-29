@@ -751,6 +751,14 @@ export const MODULES: ModuleData[] = [
         ],
       },
       {
+        slug: 'products-videos',
+        title: 'Training Videos',
+        type: 'video',
+        videos: [
+          { title: 'Floor Cleaner Mixing Guide', embedId: '11CZgWFRVRlCZZNY_GFT1k94tQDBKmTlw', source: 'drive' },
+        ],
+      },
+      {
         slug: 'products-quiz',
         title: 'Knowledge Check',
         type: 'quiz',
@@ -911,6 +919,7 @@ export const MODULES: ModuleData[] = [
         title: 'Training Videos',
         type: 'video',
         videos: [
+          { title: 'Residential Cleaning Supplies Overview', embedId: '1J3EEkJq0lLPj9PJDyeF2M5ajIwZHUGMV', source: 'drive' },
           { title: 'Cleaning 101', embedId: '0rNMpFcebcc' },
           { title: 'How to Deep Clean a Home', embedId: 'JflYB9gHCek' },
           { title: 'Move In / Move Out Clean', embedId: 'XJSeBnIf_pk' },
@@ -1018,6 +1027,7 @@ export const MODULES: ModuleData[] = [
         title: 'Training Videos',
         type: 'video',
         videos: [
+          { title: 'Commercial Cleaning Supplies Overview', embedId: '1AKxKItgXXBWkfqec2rrNQnwymOb9_iWu', source: 'drive' },
           { title: 'How To Clean an Office', embedId: '4t2U-TKDmUg' },
           { title: 'How To Clean a Commercial Washroom', embedId: 's03XgZi3VBo' },
           { title: 'Mopping Techniques', embedId: 'TXt-XwHywOY' },
