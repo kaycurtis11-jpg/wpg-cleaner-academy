@@ -94,6 +94,9 @@ export default function EmploymentPathPage() {
               <li>• EI qualifies you for maternity, illness &amp; unemployment benefits</li>
               <li>• CPP builds your retirement pension</li>
             </ul>
+            <p className="text-xs text-gray-400 mt-2 italic">
+              Rates reflect current CRA regulations and are subject to change.
+            </p>
           </InfoCard>
 
           <InfoCard icon={Clock} color="blue" title="Vacation & Time Off">
