@@ -80,7 +80,7 @@ export default function EmploymentPathPage() {
           <InfoCard icon={DollarSign} color="blue" title="Pay & Payroll">
             <ul className="space-y-1.5 text-sm text-gray-600">
               <li>• Paid on a regular biweekly schedule</li>
-              <li>• Starting rate: <strong>$19/hour</strong></li>
+              <li>• Competitive hourly rate, set by management</li>
               <li>• Overtime at <strong>1.5× after 40 hours/week</strong></li>
               <li>• All deductions handled by payroll</li>
               <li>• T4 slip issued at year-end</li>
@@ -171,7 +171,7 @@ export default function EmploymentPathPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <InfoCard icon={DollarSign} color="purple" title="Pay & Invoicing">
             <ul className="space-y-1.5 text-sm text-gray-600">
-              <li>• Starting rate: <strong>$23/hour</strong></li>
+              <li>• Higher gross rate than employees — reflects your responsibilities as a self-employed individual</li>
               <li>• More frequent payouts than employees</li>
               <li>• Paid per job or per hour as agreed</li>
               <li>• Submit invoices <strong>or</strong> log jobs directly in the company system</li>
@@ -266,7 +266,6 @@ export default function EmploymentPathPage() {
             </thead>
             <tbody>
               {[
-                ['Starting rate', '$19/hour', '$23/hour'],
                 ['Pay frequency', 'Biweekly', 'More frequent payouts'],
                 ['Tax deductions', 'Employer deducts & remits automatically', 'You manage and remit your own'],
                 ['CPP contributions', 'Split 50/50 with employer (5.95% each)', 'You pay both portions (11.9%)'],
