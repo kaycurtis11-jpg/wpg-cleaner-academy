@@ -47,24 +47,25 @@ export default async function ModulePage({ params }: { params: { slug: string } 
       {/* Module Header */}
       <div>
         <Link href="/modules" className="text-sm text-blue-600 hover:underline mb-3 inline-block">← All Modules</Link>
-        <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-xl border ${colorClass} mb-4`}>
-          <span className="text-2xl">{mod.icon}</span>
-          <div>
-            <p className="font-bold text-sm">{mod.title}</p>
-            <p className="text-xs opacity-70">Module {moduleIndex + 1} · ~{mod.estimatedMinutes} min</p>
-          </div>
+        <div className="flex items-center gap-3 mb-4">
+          <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-semibold ${colorClass}`}>
+            <span>{mod.icon}</span>
+            Module {moduleIndex + 1} · ~{mod.estimatedMinutes} min
+          </span>
+          {moduleComplete && <span className="text-xs text-green-600 font-semibold bg-green-50 border border-green-200 px-3 py-1.5 rounded-lg">✓ Complete</span>}
         </div>
-        <p className="text-gray-600">{mod.description}</p>
+        <h1 className="font-display text-3xl text-gray-900 leading-tight mb-2">{mod.title}</h1>
+        <p className="text-gray-500 text-base">{mod.description}</p>
 
         {/* Progress bar */}
-        <div className="mt-4">
-          <div className="flex justify-between text-xs text-gray-500 mb-1">
+        <div className="mt-5">
+          <div className="flex justify-between text-xs text-gray-400 mb-1.5">
             <span>{completedLessons.size} of {mod.lessons.length} lessons completed</span>
-            {moduleComplete && <span className="text-green-600 font-medium">✅ Module Complete</span>}
+            <span>{Math.round((completedLessons.size / mod.lessons.length) * 100)}%</span>
           </div>
-          <div className="w-full bg-gray-100 rounded-full h-2">
+          <div className="w-full bg-gray-100 rounded-full h-1.5">
             <div
-              className="bg-blue-600 h-2 rounded-full transition-all"
+              className="bg-brand-600 h-1.5 rounded-full transition-all duration-500"
               style={{ width: `${Math.round((completedLessons.size / mod.lessons.length) * 100)}%` }}
             />
           </div>
