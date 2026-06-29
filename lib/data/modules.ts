@@ -636,7 +636,7 @@ export const MODULES: ModuleData[] = [
             question: 'Where can you find Safety Data Sheets (SDS) for cleaning products?',
             options: [
               'You need to look them up online for each product',
-              'In the janitorial closet binder and via QR code on site, and in the Product Knowledge Center of this app',
+              'In the janitorial closet binder, via QR code on site, or in the Product Knowledge Center of this app',
               'Only available from the manufacturer directly',
               'SDS sheets are not required for cleaning products',
             ],
