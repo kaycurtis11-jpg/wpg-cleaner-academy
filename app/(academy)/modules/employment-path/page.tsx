@@ -82,6 +82,7 @@ export default function EmploymentPathPage() {
               <li>• Paid on a regular biweekly schedule</li>
               <li>• Competitive hourly rate, set by management</li>
               <li>• Overtime at <strong>1.5× after 40 hours/week</strong></li>
+              <li>• <strong>Vehicle allowance</strong> paid out biweekly — amount based on part-time vs. full-time status</li>
               <li>• All deductions handled by payroll</li>
               <li>• T4 slip issued at year-end</li>
             </ul>
