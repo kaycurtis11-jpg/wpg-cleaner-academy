@@ -81,6 +81,14 @@ export function ChecklistsClient({ cleaningTrack }: { cleaningTrack: CleaningTra
               <div className="flex items-center gap-2 shrink-0">
                 <a
                   href={checklist.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition-colors"
+                >
+                  ↗ Open
+                </a>
+                <a
+                  href={checklist.file}
                   download
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition-colors"
                 >
@@ -98,12 +106,24 @@ export function ChecklistsClient({ cleaningTrack }: { cleaningTrack: CleaningTra
             {/* PDF viewer */}
             {expanded === checklist.id && (
               <div className="border-t border-gray-100">
-                <iframe
-                  src={checklist.file}
+                <object
+                  data={checklist.file}
+                  type="application/pdf"
                   className="w-full"
                   style={{ height: '80vh' }}
-                  title={checklist.title}
-                />
+                >
+                  <div className="flex flex-col items-center justify-center h-64 gap-4 text-gray-500">
+                    <p className="text-sm">Your browser can't display this PDF inline.</p>
+                    <a
+                      href={checklist.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-lg hover:bg-brand-700 transition-colors"
+                    >
+                      Open PDF in new tab
+                    </a>
+                  </div>
+                </object>
               </div>
             )}
           </div>
