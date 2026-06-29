@@ -65,13 +65,12 @@ export function MobileNav({ completedSlugs, userName, cleaningTrack = 'both' }: 
 
             <nav className="p-4 space-y-1">
               {[
-                { href: '/dashboard', label: 'Dashboard', icon: '📊' },
+                { href: '/dashboard', label: 'My Dashboard', icon: '📊' },
                 { href: '/modules', label: 'All Modules', icon: '📚' },
                 { href: '/checklists', label: 'Checklists', icon: '☑️' },
                 { href: '/sds', label: 'Safety Data Sheets', icon: '⚠️' },
                 { href: '/ready', label: 'Pre-Work Sign-Off', icon: '✅' },
                 { href: '/faq', label: 'FAQ', icon: '❓' },
-                { href: '/profile', label: 'My Profile', icon: '👤' },
               ].map(item => (
                 <Link
                   key={item.href}
