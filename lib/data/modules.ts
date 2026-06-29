@@ -661,7 +661,7 @@ export const MODULES: ModuleData[] = [
         slug: 'products-overview',
         title: 'Product Overview',
         type: 'lesson',
-        content: 'Depending on your contract, WPG Local Cleaners may provide commercial cleaning products to be used and kept on site. All cleaning products we use are listed below along with safety notes. There is also a QR code accessible on-site in the janitorial closet for Safety Data Sheets.',
+        content: 'WPG Local Cleaners provides all cleaning products you will need. All products we use are listed below along with safety notes. There is also a QR code accessible in the janitorial closet for Safety Data Sheets.',
         warning: 'Never mix cleaning products. Read the label of every product before use. When in doubt, ask management.',
       },
       {
@@ -743,7 +743,7 @@ export const MODULES: ModuleData[] = [
           {
             heading: 'EasyOff Oven Cleaner',
             bullets: [
-              'USES: Oven interiors, oven racks, heavily baked-on grease (commercial or deep-clean use only).',
+              'USES: Oven interiors, oven racks, heavily baked-on grease (deep-clean use only).',
               'SAFETY: HIGHLY CORROSIVE & FLAMMABLE aerosol. Gloves and eye protection required. Well-ventilated areas only.',
               '⚠️ DANGER: Avoid skin/eye contact and inhaling spray. Do not use on aluminum or non-oven surfaces.',
             ],
