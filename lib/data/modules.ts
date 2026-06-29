@@ -721,7 +721,7 @@ export const MODULES: ModuleData[] = [
             bullets: [
               'USES: Porcelain, ceramic, fiberglass — great for most tubs & sinks.',
               'SAFETY: Can cause skin irritation and serious eye damage. Wear eye protection.',
-              'NOTE: Rinse bathtubs thoroughly after use — residue can be slippery.',
+              'NOTE: Rinse bathtubs thoroughly after use — residue can be harmful to skin.',
             ],
           },
           {
@@ -912,7 +912,7 @@ export const MODULES: ModuleData[] = [
             ],
           },
         ],
-        warning: 'Always rinse bathtubs well if using BFK (Bar Keepers Friend) soft soap — residue can be slippery.',
+        warning: 'Always rinse bathtubs well if using BFK (Bar Keepers Friend) soft soap — residue can be harmful to skin.',
       },
       {
         slug: 'residential-videos',
@@ -1600,12 +1600,12 @@ export const MODULES: ModuleData[] = [
             question: 'What\'s something important to remember when using Bar Keepers Friend Soft Cleanser?',
             options: [
               'It can be left on the surface without rinsing',
-              'Rinse the surface thoroughly after use — residue can be slippery',
+              'Rinse the surface thoroughly after use — residue can be harmful to skin',
               'It should never be used on tubs or sinks',
               'No PPE is required when using it',
             ],
             correct: 1,
-            explanation: 'Always rinse thoroughly after using BKF Soft Cleanser — leftover residue can make tubs and sinks slippery.',
+            explanation: 'Always rinse thoroughly after using BKF Soft Cleanser — leftover residue can be harmful to skin.',
           },
         ],
       },
