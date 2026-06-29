@@ -203,7 +203,7 @@ export const MODULES: ModuleData[] = [
           {
             heading: 'What It Means to Be an Independent Contractor',
             bullets: [
-              'You are paid a higher gross rate per job — this reflects the additional responsibilities you carry as a business owner',
+              'You are paid a higher gross rate per job — this reflects the additional responsibilities you carry as a self-employed individual',
               'You operate as your own business and set your own availability',
               'You are responsible for remitting your own taxes to the CRA',
               'You must pay both employee and employer portions of CPP contributions',
@@ -1528,7 +1528,7 @@ export const MODULES: ModuleData[] = [
           {
             heading: 'What\'s Included',
             bullets: [
-              'Higher gross rate than employees — reflects your responsibilities as a business owner',
+              'Higher gross rate than employees — reflects your responsibilities as a self-employed individual',
               'More frequent payouts',
               'Submit invoices or log jobs in the company system',
               'No deductions — full gross paid every time',
