@@ -120,6 +120,30 @@ export default function ReadyPage() {
         <strong>This is your official readiness confirmation.</strong> By submitting, you are confirming that you have completed Academy training, understood your role obligations, and are prepared to work professionally on behalf of WPG Local Cleaners.
       </div>
 
+      {/* Management team */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <h2 className="font-semibold text-gray-900 mb-4">Your Management Team</h2>
+        <img src="/management-photos.jpg" alt="Management team — Desiree, Kayla, and Kris Ann" className="w-full rounded-xl object-cover mb-4" />
+        <div className="grid grid-cols-3 gap-3 text-center text-xs text-gray-600">
+          <div>
+            <p className="font-semibold text-gray-900">Desiree</p>
+            <p className="text-gray-500">Operations Manager</p>
+            <p className="text-brand-600 font-medium mt-1">204-500-1894</p>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-900">Kayla</p>
+            <p className="text-gray-500">Founder & CEO</p>
+            <p className="text-brand-600 font-medium mt-1">647-762-0130</p>
+            <p className="text-gray-400 text-[10px]">emergencies only</p>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-900">Kris Ann</p>
+            <p className="text-gray-500">Communications Manager</p>
+            <p className="text-brand-600 font-medium mt-1">204-805-4249</p>
+          </div>
+        </div>
+      </div>
+
       {/* Role selection */}
       {!role && (
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">

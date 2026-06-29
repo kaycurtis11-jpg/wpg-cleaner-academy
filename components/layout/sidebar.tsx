@@ -37,16 +37,9 @@ export function Sidebar({ completedSlugs, cleaningTrack = 'both' }: { completedS
   return (
     <aside className="hidden lg:flex flex-col w-64 min-h-screen bg-white border-r border-gray-200 fixed left-0 top-0 z-10">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-100">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-            <span className="text-white text-lg">🏠</span>
-          </div>
-          <div>
-            <p className="font-bold text-gray-900 text-sm leading-tight">WPG Local Cleaners</p>
-            <p className="text-xs text-blue-600 font-medium">Cleaner Academy</p>
-          </div>
-        </div>
+      <div className="px-5 py-4 border-b border-gray-100">
+        <img src="/logo.png" alt="WPG Local Cleaners" className="h-10 w-auto object-contain" />
+        <p className="text-xs text-brand-600 font-semibold mt-1">Cleaner Academy</p>
       </div>
 
       {/* Nav */}
