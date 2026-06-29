@@ -601,7 +601,7 @@ export const MODULES: ModuleData[] = [
             options: [
               'Use it — it\'s probably just water',
               'Smell it to figure out what it is',
-              'Do not use it and report it to management',
+              'Do not use it',
               'Label it yourself based on what you think it contains',
             ],
             correct: 2,
