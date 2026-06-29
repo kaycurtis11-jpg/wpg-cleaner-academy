@@ -72,6 +72,11 @@ export const MODULES: ModuleData[] = [
         slug: 'management-team',
         title: 'Our Management Team',
         type: 'lesson',
+        image: {
+          src: '/management-photos.jpg',
+          alt: 'WPG Local Cleaners management team — Desiree, Kayla, and Kris Ann',
+          caption: 'Left to right: Desiree (Operations Manager), Kayla (Founder & CEO), Kris Ann (Communications Manager)',
+        },
         sections: [
           {
             heading: 'Kayla Curtis — Founder & CEO',
