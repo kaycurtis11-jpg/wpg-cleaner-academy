@@ -128,7 +128,7 @@ export default function EmploymentPathPage() {
           <InfoCard icon={TrendingUp} color="blue" title="Schedule & Growth">
             <ul className="space-y-1.5 text-sm text-gray-600">
               <li>• Schedule assigned by management</li>
-              <li>• Consistent hours and client assignments</li>
+              <li>• More consistent hours and client assignments</li>
               <li>• Growth path: Senior Cleaner → Trainer → Team Lead</li>
               <li>• Notice required for termination (per Employment Standards)</li>
             </ul>
