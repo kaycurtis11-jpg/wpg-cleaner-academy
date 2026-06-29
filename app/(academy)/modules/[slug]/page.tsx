@@ -166,16 +166,26 @@ export default async function ModulePage({ params }: { params: { slug: string } 
                         <p className="text-blue-700 text-sm">{lesson.tip}</p>
                       </div>
                     )}
-                    <div className="space-y-2">
-                      {lesson.items?.map((item, ii) => (
-                        <div key={ii} className="flex gap-3 p-3 bg-gray-50 rounded-lg">
-                          <div className="w-5 h-5 border-2 border-gray-300 rounded flex-shrink-0 mt-0.5" />
-                          <div>
-                            <p className="text-sm font-medium text-gray-800">{item.label}</p>
-                            {item.note && <p className="text-xs text-gray-500 mt-0.5">{item.note}</p>}
-                          </div>
-                        </div>
-                      ))}
+                    <div className="bg-brand-50 border border-brand-100 rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                      <div>
+                        <p className="font-semibold text-brand-900 text-sm">View the full checklist</p>
+                        <p className="text-brand-600 text-xs mt-0.5">Your checklists are available to view and download in the Checklists section.</p>
+                      </div>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <a
+                          href={mod.slug === 'commercial-cleaning' ? '/checklist-commercial.pdf' : '/checklist-customizable.pdf'}
+                          download
+                          className="px-3 py-1.5 bg-white border border-brand-200 text-brand-700 text-xs font-semibold rounded-lg hover:bg-brand-50 transition-colors"
+                        >
+                          ⬇ Download
+                        </a>
+                        <Link
+                          href="/checklists"
+                          className="px-3 py-1.5 bg-brand-600 text-white text-xs font-semibold rounded-lg hover:bg-brand-700 transition-colors"
+                        >
+                          View Checklists →
+                        </Link>
+                      </div>
                     </div>
                     {!done && (
                       <LessonMarkComplete moduleSlug={mod.slug} lessonSlug={lesson.slug} label="I have reviewed this checklist" />
@@ -213,9 +223,6 @@ export default async function ModulePage({ params }: { params: { slug: string } 
                           </div>
                         </div>
                       ))}
-                    </div>
-                    <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
-                      <p className="text-amber-800 text-sm">📝 <strong>Note:</strong> Video links need to be updated with the actual YouTube video IDs. Contact management to add the correct videos.</p>
                     </div>
                     {!done && (
                       <LessonMarkComplete moduleSlug={mod.slug} lessonSlug={lesson.slug} label="I have watched these videos" />

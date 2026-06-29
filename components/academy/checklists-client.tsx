@@ -113,7 +113,7 @@ export function ChecklistsClient({ cleaningTrack }: { cleaningTrack: CleaningTra
                   style={{ height: '80vh' }}
                 >
                   <div className="flex flex-col items-center justify-center h-64 gap-4 text-gray-500">
-                    <p className="text-sm">Your browser can't display this PDF inline.</p>
+                    <p className="text-sm">Your browser can&apos;t display this PDF inline.</p>
                     <a
                       href={checklist.file}
                       target="_blank"
