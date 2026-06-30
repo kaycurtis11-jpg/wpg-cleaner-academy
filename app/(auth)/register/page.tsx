@@ -28,7 +28,8 @@ export default function RegisterPage() {
       setError('Password must be at least 8 characters.')
       return
     }
-    if (form.code.toUpperCase().trim() !== 'WPG2025') {
+    const normalizedCode = form.code.toUpperCase().replace(/\s+/g, '')
+    if (normalizedCode !== 'WPG2025') {
       setError('Invalid access code. Please contact management to receive your access code.')
       return
     }
@@ -44,7 +45,7 @@ export default function RegisterPage() {
     })
 
     if (error) {
-      setError(error.message)
+      setError(error.message || error.toString() || 'Something went wrong — please try again or contact management.')
       setLoading(false)
     } else {
       router.push('/dashboard')
