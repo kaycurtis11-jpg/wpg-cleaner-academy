@@ -40,12 +40,15 @@ export default function RegisterPage() {
       password: form.password,
       options: {
         data: { full_name: form.name },
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
     })
 
     if (error) {
-      setError(error.message || error.toString() || 'Something went wrong — please try again or contact management.')
+      const msg = error.message && error.message !== '{}'
+        ? error.message
+        : `Registration failed. Please check your details and try again, or contact management.`
+      console.error('Registration error:', error)
+      setError(msg)
       setLoading(false)
     } else {
       router.push('/dashboard')
