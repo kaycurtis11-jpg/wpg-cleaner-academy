@@ -37,6 +37,11 @@ export default async function DashboardPage() {
     supabase.from('academy_profiles').select('cleaning_track').eq('user_id', user.id).maybeSingle(),
   ])
 
+  // Auto-create academy_profiles row on first login so the cleaner appears in the ops portal
+  if (!profileData) {
+    await supabase.from('academy_profiles').insert({ user_id: user.id, cleaning_track: 'both' })
+  }
+
   const cleaningTrack = (profileData?.cleaning_track ?? 'both') as 'both' | 'residential' | 'commercial'
 
   function isRequired(modTrack: string) {
