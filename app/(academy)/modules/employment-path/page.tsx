@@ -257,6 +257,7 @@ export default function EmploymentPathPage() {
           <FileText className="w-4 h-4 text-gray-500" /> Side-by-Side Comparison
         </h2>
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
@@ -306,6 +307,7 @@ export default function EmploymentPathPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
 
