@@ -35,24 +35,27 @@ export default function RegisterPage() {
     }
 
     setLoading(true)
-    const { error } = await supabase.auth.signUp({
-      email: form.email,
-      password: form.password,
-      options: {
-        data: { full_name: form.name },
-      },
-    })
+    try {
+      const { error } = await supabase.auth.signUp({
+        email: form.email,
+        password: form.password,
+        options: {
+          data: { full_name: form.name },
+        },
+      })
 
-    if (error) {
-      const msg = error.message && error.message !== '{}'
-        ? error.message
-        : `Registration failed. Please check your details and try again, or contact management.`
-      console.error('Registration error:', error)
-      setError(msg)
+      if (error) {
+        console.error('Supabase signUp error:', error)
+        setError(error.message || 'Registration failed. Please try again or contact management.')
+        setLoading(false)
+      } else {
+        router.push('/dashboard')
+        router.refresh()
+      }
+    } catch (err) {
+      console.error('Unexpected registration error:', err)
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.')
       setLoading(false)
-    } else {
-      router.push('/dashboard')
-      router.refresh()
     }
   }
 
