@@ -12,6 +12,7 @@ const NAV = [
   { href: '/checklists', label: 'Checklists', icon: '☑️' },
   { href: '/sds', label: 'Safety Data Sheets', icon: '⚠️' },
   { href: '/ready', label: 'Pre-Work Sign-Off', icon: '✅' },
+  { href: '/how-to', label: 'How-To Videos', icon: '🎬' },
   { href: '/faq', label: 'FAQ', icon: '❓' },
 ]
 
